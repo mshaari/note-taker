@@ -10,7 +10,7 @@ module.exports = app => {
         var notes = JSON.parse(data);
 
         function refreshDb() {
-            fs.writeFile('./db/db.json', JSON.stringify(notes, null, '\t'), (err) => {
+            fs.writeFile('db/db.json', JSON.stringify(notes, null, '\t'), (err) => {
                 if (err) throw (err);
                 return true;
             });
@@ -49,7 +49,7 @@ module.exports = app => {
         });
         
         app.get('/notes', function(req, res) {
-            res.sendFile(path.join(__dirname, '../public/notes.html'));
+            res.sendFile(path.join(__dirname, '../public/notes.html')); //if this doesnt work change __dirname to "cwd" (method)
         });
 
         //this has to go at the bottom, right
